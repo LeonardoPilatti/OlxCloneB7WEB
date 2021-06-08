@@ -1,17 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+
+// esse import createStore e Provider é de extrema importância para funcionar o redux;
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import Reducers from './Reducers';
+// esse const store é importante para o redux também;
+const store = createStore(Reducers);
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  </Provider>,
+  document.getElementById('root'),
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
