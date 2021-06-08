@@ -1,8 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
+import Routes from './Routes';
 
 const Page = (props) => {
-  return <div>Opa, funcionando</div>;
+  return (
+    <BrowserRouter>
+      <Routes />
+    </BrowserRouter>
+  );
 };
 
 const mapStateToProps = (state) => {
@@ -14,3 +20,5 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Page);
+
+/// esse mapStateToProps e o MapDispatchToProps eh do Redux;
