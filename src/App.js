@@ -3,10 +3,15 @@ import { connect } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import Routes from './Routes';
 
+import Header from './components/partials/Header/Header';
+import Footer from './components/partials/Footer/Footer';
+
 const Page = (props) => {
   return (
     <BrowserRouter>
+      <Header />
       <Routes />
+      <Footer />
     </BrowserRouter>
   );
 };
