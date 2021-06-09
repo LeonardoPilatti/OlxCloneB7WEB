@@ -1,4 +1,72 @@
 header {
-  height: 100px;
-  background-color: #ccc;
+  height: 60px;
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
+}
+
+.logo {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  height: 60px;
+}
+.logo1,
+.logo2,
+.logo3 {
+  font-size: 27px;
+  font-weight: bold;
+}
+
+.logo1 {
+  color: #ff0000;
+}
+.logo2 {
+  color: #00ff00;
+}
+
+.logo3 {
+  color: #0000ff;
+}
+
+nav {
+  padding: 10px 0;
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+ul {
+  display: flex;
+  align-items: center;
+  height: 40px;
+}
+
+li {
+  margin: 0 20px;
+}
+
+li a {
+  color: #000;
+  font-size: 14px;
+  transition: all ease 0.5s;
+  padding-bottom: 5px 10px;
+}
+
+li a:hover {
+  color: #999;
+}
+
+li a.button {
+  background-color: #ff8100;
+  border-radius: 4px;
+  color: #fff;
+  padding: 5px 10px;
+}
+
+li a.button:hover {
+  background-color: #e57706;
 }
