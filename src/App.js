@@ -1,3 +1,5 @@
+//npm install redux react-redux --save;
+// npm install react-router-dom --save;
 import React from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
