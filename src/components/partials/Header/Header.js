@@ -9,7 +9,7 @@ const Header = () => {
 
   return (
     <header>
-      <section className="container">
+      <section className={`${styles.header} container`}>
         <div className={styles.logo}>
           <Link to="/">
             <span className={styles.logo1}>O</span>
@@ -37,7 +37,7 @@ const Header = () => {
             {!logged && (
               <>
                 <li>
-                  <Link to="/login">Login</Link>
+                  <Link to="/signin">Login</Link>
                 </li>
                 <li>
                   <Link to="/cadastrar">Cadastrar</Link>

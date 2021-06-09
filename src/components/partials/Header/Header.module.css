@@ -4,6 +4,10 @@ header {
   border-bottom: 1px solid #ccc;
 }
 
+.header {
+  display: flex;
+}
+
 .logo {
   flex: 1;
   display: flex;

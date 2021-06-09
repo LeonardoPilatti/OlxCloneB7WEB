@@ -17,5 +17,16 @@ a {
 .container {
   max-width: 1000px;
   margin: 0 auto;
-  display: flex;
+}
+
+.tituloPrincipal {
+  font-size: 27px;
+}
+
+.errorMessage {
+  margin: 10px 0;
+  background-color: #ffcaca;
+  color: #000;
+  border: 2px solid #ff0000;
+  padding: 10px;
 }
