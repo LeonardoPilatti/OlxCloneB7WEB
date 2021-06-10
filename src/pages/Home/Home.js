@@ -2,13 +2,14 @@ import React from 'react';
 import styles from './Home.module.css';
 import useApi from '../../helpers/OlxAPI';
 import { Link } from 'react-router-dom';
+import AdItem from '../../components/partials/AdItem/AdItem';
 
 const Home = () => {
   const api = useApi();
 
   const [stateList, setStateList] = React.useState([]);
   const [categories, setCategories] = React.useState([]);
-
+  const [adList, setAdList] = React.useState([]);
   React.useEffect(() => {
     const getStates = async () => {
       const slist = await api.getStates();
@@ -18,11 +19,22 @@ const Home = () => {
   }, [api]);
 
   React.useEffect(() => {
-    const getCategories = async () => {
+    const getCaregories = async () => {
       const cats = await api.getCategories();
       setCategories(cats);
     };
-    getCategories();
+    getCaregories();
+  }, [api]);
+
+  React.useEffect(() => {
+    const getRecentsAds = async () => {
+      const json = await api.getAds({
+        sort: 'desc',
+        limit: 8,
+      });
+      setAdList(json.ads);
+    };
+    getRecentsAds();
   }, [api]);
 
   return (
@@ -54,7 +66,22 @@ const Home = () => {
           ))}
         </div>
       </div>
-      <div className="container">...</div>
+      <div className="container">
+        <h2 className={styles.h2}>Anúncios Recentes</h2>
+        <div className={styles.list}>
+          {adList.map((i, index) => (
+            <AdItem key={index} data={i} />
+          ))}
+        </div>
+        <Link top="/ads" className={styles.seeAllLink}>
+          Ver todos
+        </Link>
+        <hr />
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate
+        possimus esse, incidunt placeat debitis accusamus minima quae quo
+        necessitatibus similique! Nihil libero unde quos nobis quibusdam eius
+        reprehenderit adipisci vitae.
+      </div>
     </section>
   );
 };
