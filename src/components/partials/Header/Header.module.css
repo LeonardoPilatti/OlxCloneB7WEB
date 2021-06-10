@@ -64,11 +64,19 @@ li a:hover {
   color: #999;
 }
 
+.button {
+  border: 0;
+  background: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: all ease 0.4s;
+  outline: 0;
+}
+
 li a.button {
   background-color: #ff8100;
-  border-radius: 4px;
   color: #fff;
-  padding: 5px 10px;
 }
 
 li a.button:hover {

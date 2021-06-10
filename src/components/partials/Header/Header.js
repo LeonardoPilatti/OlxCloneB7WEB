@@ -2,10 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Header.module.css';
 
-import { isLogged } from '../../../helpers/AuthHandler';
+import { isLogged, doLogout } from '../../../helpers/AuthHandler';
 
 const Header = () => {
   let logged = isLogged(); // aqui essa função retorna true ou false caso exista o token no cookie;
+
+  const handleLogout = () => {
+    doLogout();
+    window.location.href = '/';
+  };
 
   return (
     <header>
@@ -25,7 +30,9 @@ const Header = () => {
                   <Link to="/my-account">Minha Conta</Link>
                 </li>
                 <li>
-                  <Link to="/logout">Cadastrar</Link>
+                  <button className={styles.button} onClick={handleLogout}>
+                    Sair
+                  </button>
                 </li>
                 <li>
                   <Link to="/post-an-ad" className={styles.button}>
