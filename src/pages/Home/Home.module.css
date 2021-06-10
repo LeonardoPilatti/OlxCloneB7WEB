@@ -47,3 +47,29 @@
   padding: 0 20px;
   cursor: pointer;
 }
+
+.categoryList {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.categoryItem {
+  width: 25%;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  color: #000;
+  text-decoration: none;
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+.categoryItem img {
+  width: 45px;
+  height: 45px;
+  margin-right: 10px;
+}
+
+.categoryItem:hover {
+  color: #999;
+}
