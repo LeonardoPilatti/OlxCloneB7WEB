@@ -24,18 +24,27 @@ const SignUp = () => {
       console.log(stateList);
     };
     getStates();
-  }, []);
+  }, [api, stateList]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setDisabled(true);
 
-    const json = await api.login(email, password);
+    if (password !== confirmPassword) {
+      setError('Senhas não batem');
+      setDisabled(false);
+      setTimeout(() => {
+        setError('');
+      }, 2000);
+      return;
+    }
+
+    const json = await api.register(name, email, password, stateLoc);
 
     if (json.error) {
       setError(json.error);
     } else {
-      doLogin(json.token, confirmPassword);
+      doLogin(json.token);
       window.location.href = '/';
     }
     setDisabled(false);
