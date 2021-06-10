@@ -6,6 +6,7 @@ import Sobre from './pages/Sobre/Sobre';
 import NotFound from './pages/NotFound/NotFound';
 import SignIn from './pages/SignIn/SignIn';
 import SignUp from './pages/SignUp/SignUp';
+import AdPage from './pages/AdPage/AdPage';
 
 const Routes = () => {
   return (
@@ -21,6 +22,9 @@ const Routes = () => {
       </Route>
       <Route exact path="/signup">
         <SignUp />
+      </Route>
+      <Route exact path="/ad/:id">
+        <AdPage />
       </Route>
       <Route>
         <NotFound />
