@@ -5,6 +5,7 @@ import Home from './pages/Home/Home';
 import Sobre from './pages/Sobre/Sobre';
 import NotFound from './pages/NotFound/NotFound';
 import SignIn from './pages/SignIn/SignIn';
+import SignUp from './pages/SignUp/SignUp';
 
 const Routes = () => {
   return (
@@ -17,6 +18,9 @@ const Routes = () => {
       </Route>
       <Route exact path="/signin">
         <SignIn />
+      </Route>
+      <Route exact path="/signup">
+        <SignUp />
       </Route>
       <Route>
         <NotFound />
