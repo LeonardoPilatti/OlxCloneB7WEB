@@ -44,7 +44,7 @@ const apiFetchGet = async (endpoint, body = []) => {
   const json = await response.json();
 
   if (json.notallowed) {
-    /// se tentar fazer algo que não pode ou que não existe
+    /// se tentar fazer algo que não pode ou que não existe ou que nao tem permissao
     window.location.href = '/signin';
     return;
   }
@@ -56,6 +56,16 @@ const OlxAPI = {
   login: async (email, password) => {
     // fazer consulta ao WebService
     const json = await apiFetchPost('/user/signin', { email, password });
+    return json;
+  },
+
+  register: async (name, email, password, stateLoc) => {
+    const json = await apiFetchPost('/user/signup', {
+      name,
+      email,
+      password,
+      state: stateLoc,
+    });
     return json;
   },
 
