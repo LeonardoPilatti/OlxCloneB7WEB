@@ -5,7 +5,7 @@ import useApi from '../../helpers/OlxAPI';
 
 import { Slide } from 'react-slideshow-image'; /// esse é para fazer funcionar o componente de imagem do react;
 import 'react-slideshow-image/dist/styles.css'; /// é importante para funcionar no slide tbm;
-const SignIn = () => {
+const AdPage = () => {
   const api = useApi();
 
   const { id } = useParams();
@@ -78,11 +78,33 @@ const SignIn = () => {
         </div>
       </div>
       <div className={styles.rightSide}>
-        <div className={styles.box}>...</div>
-        <div className={styles.box}>...</div>
+        <div className={styles.box}>
+          {adInfo.priceNegotiable && 'Preço Negociável'}
+          {!adInfo.priceNegotiable && adInfo.price && (
+            <div className={styles.price}>
+              Preço: <span>R$ {adInfo.price}</span>
+            </div>
+          )}
+        </div>
+        {adInfo.userInfo && (
+          <>
+            <a
+              href={`mailto:${adInfo.userInfo.email}`}
+              target="_blank"
+              className={styles.contactSellerLink}
+            >
+              Fale com o vendedor
+            </a>
+            <div className={`${styles.box} ${styles.createdBy}`}>
+              Anúncio por: <strong>{adInfo.userInfo.name}</strong>
+              <small>E-mail: {adInfo.userInfo.email}</small>
+              <small>Estado: {adInfo.stateName}</small>
+            </div>
+          </>
+        )}
       </div>
     </section>
   );
 };
 
-export default SignIn;
+export default AdPage;
