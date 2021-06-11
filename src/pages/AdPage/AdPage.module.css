@@ -90,3 +90,34 @@ small {
 .createdBy strong {
   display: block;
 }
+
+.others h2 {
+  font-size: 20px;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.breadChumb,
+.breadChumb a,
+.breadChumb p {
+  display: inline-block;
+  margin: 0;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.breadChumb a {
+  text-decoration: underline;
+  color: #000;
+}
+
+.breadChumb a:hover {
+  color: #999;
+}
+
+.breadChumb p {
+  padding: 0 5px;
+}
