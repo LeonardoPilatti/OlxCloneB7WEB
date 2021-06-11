@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom'; /// para pegar o id do anuncio que
 import styles from './AdPage.module.css';
 import useApi from '../../helpers/OlxAPI';
 
+import { Slide } from 'react-slideshow-image'; /// esse é para fazer funcionar o componente de imagem do react;
+import 'react-slideshow-image/dist/styles.css'; /// é importante para funcionar no slide tbm;
 const SignIn = () => {
   const api = useApi();
 
@@ -49,7 +51,17 @@ const SignIn = () => {
     <section className={`${styles.adPage} container`}>
       <div className={styles.leftSide}>
         <div className={styles.box}>
-          <div className={styles.adImage}>...</div>
+          <div className={styles.adImage}>
+            {adInfo.images && (
+              <Slide>
+                {adInfo.images.map((img, key) => (
+                  <div key={key} className={styles.eachSlide}>
+                    <img src={img} alt="" />
+                  </div>
+                ))}
+              </Slide>
+            )}
+          </div>
           <div className={styles.adInfo}>
             <div className={styles.adName}>
               {adInfo.title && <h2>{adInfo.title}</h2>}
