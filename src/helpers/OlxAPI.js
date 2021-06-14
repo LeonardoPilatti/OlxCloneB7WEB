@@ -3,6 +3,29 @@ import qs from 'qs';
 
 const BASEAPI = 'http://alunos.b7web.com.br:501';
 
+// const método POST com imagem para adicionar arquivos:
+const apiFetchFile = async (endpoint, body) => {
+  if (!body.token) {
+    let token = Cookies.get('token');
+    if (token) {
+      body.append('token', token);
+    }
+  }
+
+  const response = await fetch(BASEAPI + endpoint, {
+    method: 'POST',
+    body,
+  });
+  const json = await response.json();
+
+  if (json.notallowed) {
+    /// se tentar fazer algo que não pode ou que não existe
+    window.location.href = '/signin';
+    return;
+  }
+
+  return json;
+};
 // const método POST
 const apiFetchPost = async (endpoint, body) => {
   if (!body.token) {
@@ -89,6 +112,10 @@ const OlxAPI = {
       id,
       other,
     });
+    return json;
+  },
+  addAd: async (fData) => {
+    const json = await apiFetchFile('/ad/add', fData);
     return json;
   },
 };
