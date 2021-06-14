@@ -24,7 +24,7 @@ const Home = () => {
       setCategories(cats);
     };
     getCaregories();
-  }, [api]);
+  }, [api, categories]);
 
   React.useEffect(() => {
     const getRecentsAds = async () => {

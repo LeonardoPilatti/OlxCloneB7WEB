@@ -1,0 +1,13 @@
+.ads {
+  display: flex;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.leftSide {
+  width: 250px;
+}
+
+.rightSide {
+  flex: 1;
+}
