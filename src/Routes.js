@@ -9,6 +9,7 @@ import NotFound from './pages/NotFound/NotFound';
 import SignIn from './pages/SignIn/SignIn';
 import SignUp from './pages/SignUp/SignUp';
 import AdPage from './pages/AdPage/AdPage';
+import AddAd from './pages/AddAd/AddAd';
 
 const Routes = () => {
   return (
@@ -29,7 +30,7 @@ const Routes = () => {
         <AdPage />
       </RouteHandler>
       <RouteHandler private exact path="/post-an-ad">
-        <Sobre />
+        <AddAd />
       </RouteHandler>
       <RouteHandler>
         <NotFound />
