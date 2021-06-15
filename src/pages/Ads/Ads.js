@@ -30,7 +30,10 @@ const Ads = () => {
 
   const [resultOpacity, setResultOpacity] = React.useState(1);
 
+  const [loading, setLoading] = React.useState(true);
+
   const getAdsList = async () => {
+    setLoading(true);
     const json = await api.getAds({
       sort: 'desc',
       limit: 8,
@@ -40,6 +43,7 @@ const Ads = () => {
     });
     setAdList(json.ads);
     setResultOpacity(1);
+    setLoading(false);
   };
 
   React.useEffect(() => {
@@ -129,6 +133,11 @@ const Ads = () => {
       </div>
       <div className={styles.rightSide}>
         <h2>Resultados</h2>
+
+        {loading && <div className={styles.listWarning}>Carregando...</div>}
+        {!loading && adList.length === 0 && (
+          <div className={styles.listWarning}>Não encontramos resultados.</div>
+        )}
         <div className={styles.listRight} style={{ opacity: resultOpacity }}>
           {adList.map((i, index) => (
             <AdItem key={index} data={i} />

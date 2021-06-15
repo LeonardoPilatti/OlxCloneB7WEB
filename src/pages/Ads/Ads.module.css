@@ -67,6 +67,11 @@ li {
   font-size: 18px;
 }
 
+.listWarning {
+  padding: 30px;
+  text-align: center;
+}
+
 .listRight {
   display: flex;
   flex-wrap: wrap;
