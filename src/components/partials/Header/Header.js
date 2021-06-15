@@ -23,7 +23,7 @@ const Header = () => {
           </Link>
         </div>
         <nav>
-          <ul>
+          <ul className={styles.ul}>
             {logged && (
               <>
                 <li>
