@@ -1,15 +1,49 @@
 import React from 'react';
 import styles from './Ads.module.css';
 import useApi from '../../helpers/OlxAPI';
-import { Link } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 import AdItem from '../../components/partials/AdItem/AdItem';
 
 const Ads = () => {
   const api = useApi();
+  const history = useHistory();
+
+  const useQueryString = () => {
+    return new URLSearchParams(useLocation().search);
+  };
+  const query = useQueryString();
+  const [q, setQ] = React.useState(
+    query.get('q') != null ? query.get('q') : '',
+  );
+  const [cat, setCat] = React.useState(
+    query.get('cat') != null ? query.get('cat') : '',
+  );
+  const [state, setState] = React.useState(
+    query.get('state') != null ? query.get('state') : '',
+  );
 
   const [stateList, setStateList] = React.useState([]);
   const [categories, setCategories] = React.useState([]);
   const [adList, setAdList] = React.useState([]);
+
+  React.useEffect(() => {
+    let queryString = [];
+    if (q) {
+      queryString.push(`q=${q}`);
+    }
+    if (cat) {
+      queryString.push(`cat=${cat}`);
+    }
+    if (state) {
+      queryString.push(`state=${state}`);
+    }
+
+    history.replace({
+      // com esse join estou juntando todos os objetivos do queryString com o "&" comercial;
+      search: `?${queryString.join('&')}`,
+    });
+  }, [q, cat, state]);
+
   React.useEffect(() => {
     const getStates = async () => {
       const slist = await api.getStates();
@@ -41,9 +75,19 @@ const Ads = () => {
     <section className={`${styles.ads} container`}>
       <div className={styles.leftSide}>
         <form method="get">
-          <input type="text" name="q" />
+          <input
+            type="text"
+            name="q"
+            placeholder="O que você procura?"
+            value={q}
+            onChange={(event) => setQ(event.target.value)}
+          />
           <div className={styles.filterName}>Estado:</div>
-          <select name="state">
+          <select
+            name="state"
+            value={state}
+            onChange={(event) => setState(event.target.value)}
+          >
             <option></option>
             {stateList.map((i, index) => (
               <option key={index} value={i.name}>
@@ -53,13 +97,22 @@ const Ads = () => {
           </select>
 
           <div className={styles.filterName}>Categoria:</div>
-          <ul>
-            {categories.map((i, index) => {
-              <li key={index} className={styles.categoryItem}>
+          <ul className={styles.lista}>
+            {categories.map((i, index) => (
+              <li
+                key={index}
+                className={styles.categoryItem}
+                className={
+                  cat === i.slug
+                    ? `${styles.categoryItem} ${styles.active}`
+                    : styles.categoryItem
+                }
+                onClick={() => setCat(i.slug)}
+              >
                 <img src={i.img} alt="" />
                 <span>{i.name}</span>
-              </li>;
-            })}
+              </li>
+            ))}
           </ul>
         </form>
       </div>
