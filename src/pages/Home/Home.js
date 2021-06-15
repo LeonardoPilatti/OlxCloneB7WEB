@@ -73,7 +73,7 @@ const Home = () => {
             <AdItem key={index} data={i} />
           ))}
         </div>
-        <Link top="/ads" className={styles.seeAllLink}>
+        <Link to="/ads" className={styles.seeAllLink}>
           Ver todos
         </Link>
         <hr />

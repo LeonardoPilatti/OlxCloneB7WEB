@@ -61,3 +61,17 @@ li {
 .rightSide {
   flex: 1;
 }
+
+.rightSide h2 {
+  margin-top: 0;
+  font-size: 18px;
+}
+
+.listRight {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.AdItem {
+  width: 33%;
+}
