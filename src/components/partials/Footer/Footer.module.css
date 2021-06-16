@@ -1,3 +1,12 @@
+.back {
+  background-color: #bbb;
+  margin-top: 20px;
+}
 .footer {
-  background-color: #ccc;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  color: #fff;
 }
