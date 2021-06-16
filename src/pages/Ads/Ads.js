@@ -24,6 +24,10 @@ const Ads = () => {
     query.get('state') != null ? query.get('state') : '',
   );
 
+  const [adsTotal, setAdsTotal] = React.useState(0);
+  const [pageCount, setPageCount] = React.useState(0);
+  const [currentPage, setCurrentPage] = React.useState(1); // esse é para ver onde estou na página
+
   const [stateList, setStateList] = React.useState([]);
   const [categories, setCategories] = React.useState([]);
   const [adList, setAdList] = React.useState([]);
@@ -34,17 +38,36 @@ const Ads = () => {
 
   const getAdsList = async () => {
     setLoading(true);
+
+    let offset = (currentPage - 1) * 2;
+
     const json = await api.getAds({
       sort: 'desc',
       limit: 8,
       q,
       cat,
       state,
+      offset,
     });
     setAdList(json.ads);
+    setAdsTotal(json.total);
     setResultOpacity(1);
     setLoading(false);
   };
+
+  React.useEffect(() => {
+    // Esse MAth.ceil() sempre irá arredondar para cima;
+    if (adList.length > 0) {
+      setPageCount(Math.ceil(adsTotal / adList.length));
+    } else {
+      setPageCount(0);
+    }
+  }, [adsTotal, adList.length]);
+
+  React.useEffect(() => {
+    setResultOpacity(0.3);
+    getAdsList();
+  }, [currentPage]);
 
   React.useEffect(() => {
     let queryString = [];
@@ -68,6 +91,7 @@ const Ads = () => {
     }
     timer = setTimeout(getAdsList, 1000);
     setResultOpacity(0.3);
+    setCurrentPage(1);
   }, [q, cat, state]);
 
   React.useEffect(() => {
@@ -85,6 +109,11 @@ const Ads = () => {
     };
     getCategories();
   }, [api]);
+
+  let paginacao = [];
+  for (let i = 1; i <= pageCount; i++) {
+    paginacao.push(i);
+  }
 
   return (
     <section className={`${styles.ads} container`}>
@@ -134,13 +163,29 @@ const Ads = () => {
       <div className={styles.rightSide}>
         <h2>Resultados</h2>
 
-        {loading && <div className={styles.listWarning}>Carregando...</div>}
+        {loading && adList.length === 0 && (
+          <div className={styles.listWarning}>Carregando...</div>
+        )}
         {!loading && adList.length === 0 && (
           <div className={styles.listWarning}>Não encontramos resultados.</div>
         )}
         <div className={styles.listRight} style={{ opacity: resultOpacity }}>
           {adList.map((i, index) => (
             <AdItem key={index} data={i} />
+          ))}
+        </div>
+        <div className={styles.paginacao}>
+          {paginacao.map((i, index) => (
+            <div
+              onClick={() => setCurrentPage(i)}
+              className={
+                i === currentPage
+                  ? `${styles.pagItem} ${styles.active}`
+                  : `${styles.pagItem}`
+              }
+            >
+              {i}
+            </div>
           ))}
         </div>
       </div>

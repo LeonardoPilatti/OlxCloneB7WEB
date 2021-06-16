@@ -80,3 +80,34 @@ li {
 .AdItem {
   width: 33%;
 }
+
+.paginacao {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 10px 0;
+}
+
+.pagItem {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  transition: all ease 0.2s;
+}
+
+.pagItem:hover {
+  border: 1px solid #999;
+  color: #999;
+}
+
+.pagItem.active {
+  background-color: #ccc;
+}
