@@ -62,3 +62,21 @@ textarea {
 .button:hover {
   background-color: #006fce;
 }
+
+@media (max-width: 600px) {
+  .area {
+    flex-direction: column;
+  }
+  .areaTitle {
+    width: 100%;
+    text-align: left;
+  }
+  .areaInput {
+    width: 100%;
+    margin: 10px 0;
+  }
+  .button {
+    width: 100%;
+    padding: 10px;
+  }
+}

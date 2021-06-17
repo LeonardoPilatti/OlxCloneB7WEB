@@ -90,5 +90,38 @@
   text-decoration: none;
   font-weight: bold;
   display: inline-block;
-  margin-top: 10px;
+  margin: 10px 20px;
+}
+.texto {
+  margin: 10px 20px;
+}
+
+@media (max-width: 600px) {
+  .searchBox form {
+    flex-direction: column;
+  }
+  .searchBox form input {
+    padding: 10px;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+  .searchBox form select {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .categoryList .categoryItem {
+    width: 50%;
+    padding: 20px;
+  }
+  .list > div {
+    width: 50%;
+    margin: 0;
+  }
+
+  .h2 {
+    margin: 10px 20px;
+  }
+  .seeAllLink {
+    margin: 10px 20px;
+  }
 }

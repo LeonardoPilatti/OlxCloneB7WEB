@@ -82,3 +82,23 @@ li a.button {
 li a.button:hover {
   background-color: #e57706;
 }
+
+@media (max-width: 600px) {
+  header {
+    height: auto;
+  }
+  .header {
+    flex-direction: column;
+  }
+  .logo {
+    justify-content: center;
+    margin: 20px 0;
+  }
+  .ul {
+    flex-direction: column;
+    height: auto;
+  }
+  .ul li {
+    margin: 10px 20px;
+  }
+}

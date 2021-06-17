@@ -121,3 +121,44 @@ small {
 .breadChumb p {
   padding: 0 5px;
 }
+
+@media (max-width: 600px) {
+  .box {
+    flex-direction: column;
+    width: 320px;
+    margin: auto;
+    overflow: hidden;
+  }
+  .leftSide {
+    margin: 10px 0;
+  }
+  .adPage {
+    flex-direction: column;
+  }
+  .adImage img {
+    width: 300px;
+  }
+  .adInfo {
+    padding: 10px;
+  }
+
+  .rightSide {
+    width: auto;
+    margin-top: 20px;
+  }
+  .contactSellerLink {
+    width: 320px;
+    margin: 20px auto;
+  }
+
+  .others {
+    margin: 10px;
+  }
+  .list > div {
+    width: 50%;
+    margin: 0;
+  }
+  .breadChumb {
+    margin: 0 5px;
+  }
+}

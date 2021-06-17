@@ -111,3 +111,28 @@ li {
 .pagItem.active {
   background-color: #ccc;
 }
+
+@media (max-width: 600px) {
+  .ads {
+    flex-direction: column;
+  }
+  .leftSide {
+    width: auto;
+    margin: 10px 20px;
+  }
+  .lista {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .lista li {
+    width: 50%;
+  }
+
+  .rightSide {
+    margin: 10px 20px;
+  }
+  .listRight > div {
+    width: 50%;
+    margin: 0;
+  }
+}
