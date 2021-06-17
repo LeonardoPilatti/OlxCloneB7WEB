@@ -77,10 +77,12 @@ const Home = () => {
           Ver todos
         </Link>
         <hr />
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate
-        possimus esse, incidunt placeat debitis accusamus minima quae quo
-        necessitatibus similique! Nihil libero unde quos nobis quibusdam eius
-        reprehenderit adipisci vitae.
+        <p className={styles.texto}>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate
+          possimus esse, incidunt placeat debitis accusamus minima quae quo
+          necessitatibus similique! Nihil libero unde quos nobis quibusdam eius
+          reprehenderit adipisci vitae.
+        </p>
       </div>
     </section>
   );
